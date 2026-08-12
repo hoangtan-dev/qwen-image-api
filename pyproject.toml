@@ -1,0 +1,40 @@
+[project]
+name = "qwen-image-server"
+version = "0.1.0"
+description = "OpenAI-compatible FastAPI server for Qwen-Image-2512"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [{ name = "tannh19" }]
+dependencies = [
+    "dishka>=1.10.1",
+    "diffusers>=0.36.0",
+    "fastapi>=0.136.3",
+    "loguru>=0.7.3",
+    "pydantic>=2.13.3",
+    "pydantic-settings>=2.14.0",
+    "torch>=2.6.0",
+    "torchao>=0.10.0",
+    "transformers>=4.57.0",
+    "uvicorn[standard]>=0.46.0",
+    "accelerate>=1.14.0",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.20.2",
+    "pre-commit>=4.6.0",
+    "ruff>=0.15.12",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+src = ["app"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+ignore_missing_imports = true
+disallow_untyped_defs = true
